@@ -19,8 +19,8 @@ typedef enum{
 }ArrType;
 
 /* Function declaration */
-void* get_arr_from_user(size_t size, ArrType type);
-void* malloc_arr(size_t size, ArrType type);
+void *get_arr_from_user(size_t size, ArrType type);
+void *malloc_arr(size_t size, ArrType type);
 int get_integer_from_user();
 char get_char_from_user();
 void print_arr_details(void* arr, ArrType type);
@@ -38,8 +38,8 @@ void print_arr_details2(void* arr, ArrType type);
 * Author - Omer Refael
 -------------------------------------------------------*/
 int main() {
-    int* nums_arr;
-    char* chars_arr;
+    int *nums_arr;
+    char *chars_arr;
 
     printf("please enter 8 integers\n");
     nums_arr = (int *)get_arr_from_user(ARR_SIZE, INT_ARR);
@@ -166,7 +166,7 @@ char get_char_from_user(){
 *
 * Author - Omer Refael
 -------------------------------------------------------*/
-void print_arr_details(void* arr, ArrType type){
+void print_arr_details(void *arr, ArrType type){
     for (int i = 0; i < ARR_SIZE; i++){
         if (type ==  INT_ARR){
             printf("0x%x: %d", &((int *)arr)[i], ((int *)arr)[i]);
@@ -182,7 +182,7 @@ void print_arr_details(void* arr, ArrType type){
 }
 
 /*print_arr_details second approch*/
-void print_arr_details2(void* arr, ArrType type){
+void print_arr_details2(void *arr, ArrType type){
     for (int i = 0; i < ARR_SIZE; i++){
         if (type ==  INT_ARR){
             printf("0x%x: %d, ", &(*((int *)arr + i)), (*((int *)arr) + i));
