@@ -9,6 +9,7 @@
 
 #define BUFFER_SIZE 10
 #define FAILURE_STATUS 1
+#define START_INDEX 0
 
 /*------- function declaration-------*/
 
@@ -53,7 +54,7 @@ int* create_arr_by_user(size_t *size);
 void sort_arr(int *arr, size_t size);
 
 /*------------------------------------------------------
-* Function Name - sort_arr 
+* Function Name - comp 
 *
 * Function Purpose - compare between two numbers
 * Parameters –  a:const void*  -the first number
@@ -94,7 +95,7 @@ int main() {
     int *arr;
     size_t size = 0;
 
-    printf("PLease enter numbers:\n");
+    printf("Please enter numbers:(whitespaces wont stop the program)\n");
     arr = create_arr_by_user(&size);
 
     sort_arr(arr, size);
@@ -110,7 +111,7 @@ void check_allocation(void *ptr){
 
 int* create_arr_by_user(size_t *size){
     int *arr;
-    int index = 0;
+    int index = START_INDEX;
     int number;
     *size = BUFFER_SIZE;
 
@@ -127,6 +128,9 @@ int* create_arr_by_user(size_t *size){
             check_allocation(arr);
         }
     }
+
+    /*no input*/
+    if (index == START_INDEX) {printf("no input!\n"); free(arr); exit(FAILURE_STATUS);}
 
     /*delete extra space*/
     *size = index;
